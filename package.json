@@ -1,0 +1,26 @@
+{
+  "name": "cleanblog",
+  "version": "1.0.0",
+  "description": "clean",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibrahimhalilsoydan/CLEAN-BLOG.git"
+  },
+  "keywords": [
+    "clean"
+  ],
+  "author": "ibrahim halil SOYDAN",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ibrahimhalilsoydan/CLEAN-BLOG/issues"
+  },
+  "homepage": "https://github.com/ibrahimhalilsoydan/CLEAN-BLOG#readme",
+  "devDependencies": {
+    "prettier": "3.5.3"
+  }
+}
