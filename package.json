@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,10 @@
   },
   "homepage": "https://github.com/ibrahimhalilsoydan/CLEAN-BLOG#readme",
   "devDependencies": {
+    "nodemon": "^3.1.10",
     "prettier": "3.5.3"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
   }
 }
