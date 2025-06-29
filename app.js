@@ -1,11 +1,7 @@
-import Post from './models/Post.js';
 import express from 'express';
-import ejs from 'ejs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import methodOverride from 'method-override';
+import * as postControllers from './controllers/postControllers.js';
+import * as pageControllers from './controllers/pageControllers.js';
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -14,48 +10,22 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET'],
+  })
+);
 
-app.get('/', async(req, res) => {
-  const posts =await Post.find({})
-  res.render('index',{
-    posts:posts
-  });
-});
+app.get('/', postControllers.getAllPosts);
+app.get('/posts/:id', postControllers.getPost);
+app.post('/posts', postControllers.creatPost);
+app.put('/posts/:id', postControllers.updatePost);
+app.delete('/posts/:id', postControllers.deletePost);
 
-app.get('/posts/:id', async (req, res) => {
-
-  const post = await Post.findById(req.params.id)
-  res.render('post',{
-    post
-  });
-});
-
-app.get('/about', (req, res) => {
-  res.render('about');
-});
-
-app.get('/add_post', (req, res) => {
-  res.render('add_post');
-});
-
-/*app.get('/post', async (req, res) => {
-  const posts = await Post.find({});
-  res.render('post', { posts });
-});*/
-
-app.get('/post', (req, res) => {
-  res.render('post');
-});
-
-app.post('/posts', async (req, res) => {
-  const newPost = new Post({
-    title: req.body.title,
-    detail: req.body.detail,
-  });
-
-  await newPost.save(); // 🔴 Bunu yazmazsan MongoDB'ye hiçbir şey gitmez
-  res.redirect('/');
-});
+app.get('/posts/edit/:id', pageControllers.getEditPostPage);
+app.get('/about', pageControllers.getAboutPage);
+app.get('/add_post', pageControllers.getAddPostPage);
+app.get('/post', pageControllers.getPostPage);
 
 const port = 3000;
 app.listen(port, () => {

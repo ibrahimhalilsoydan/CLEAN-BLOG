@@ -37,13 +37,16 @@
           
 
           <p><%=post.detail %></p>
-
+            
           <a href="#">
             <img class="img-fluid" src="/img/post-sample-image.jpg" alt="">
           </a>
-          
-            <a href="http://spaceipsum.com/">Space Ipsum</a>. Photographs by
-            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>.</p>
+                <hr>
+        <div style="display: flex; justify-content:space-between">
+        <a href="/posts/edit/<%= post._id %>" style="background-color: chocolate;" class="btn btn-primary">Edit</a>
+        <a href="/posts/<%=post._id %>?_method=DELETE" style="background-color: red;" class="btn btn-primary" onclick="return confirm('Are you sure')">Delete</a>
+        </div>
+              </div>
         </div>
       </div>
     </div>

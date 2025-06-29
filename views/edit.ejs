@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>Add New Post</h1>
+            <h1>Edit The Post</h1>
 
           </div>
         </div>
@@ -23,26 +23,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <form method="POST" action="/posts">
+        <form  method="post" action="/posts/<%=post._id %>?_method=PUT">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Post Title</label>
-              <input type="text" class="form-control" name="title" placeholder="Title" id="title" required>
+              <input type="text" class="form-control" name="title" value="<%=post.title %>" placeholder="Title" id="title" required >
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Post Detail</label>
-              <textarea rows="5" class="form-control" name="detail" placeholder="Detail" id="detail" required></textarea>
+              <textarea rows="5" class="form-control" name="detail" placeholder="Detail" id="detail" required><%=post.detail %></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <br>
-          <div id="success" style="justify-content: space-between;">
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
-          </div>
-          
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Update</button>
         </form>
       </div>
     </div>
